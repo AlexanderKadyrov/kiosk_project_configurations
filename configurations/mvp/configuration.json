@@ -1,0 +1,57 @@
+{
+    "screens": [
+      {
+        "id": "first_screen",
+        "ui": {
+          "background": {
+            "type": "source",
+            "value": "https://github.com/AlexanderKadyrov/kiosk_project_configurations/blob/master/configurations/mvp/assets/im_page_start.png?raw=true"
+          },
+          "navigation": {
+            "title": {
+              "text": {
+                "value": "Главный экран",
+                "font": { "name": "helvetica", "size": 24 }
+              }
+            }
+          },
+          "components": [
+            {
+              "id": "btn_go_to_second",
+              "type": "button",
+              "label": "Открыть второй экран",
+              "trigger_action_id": "to_second"
+            }
+          ]
+        },
+        "router": {
+          "path": "/",
+          "actions": [
+            { "id": "to_second", "screen_target_id": "second_screen" }
+          ]
+        }
+      },
+      {
+        "id": "second_screen",
+        "ui": {
+          "background": {
+            "type": "color",
+            "value": "#FF1A237E"
+          },
+          "navigation": {
+            "title": {
+              "text": {
+                "value": "Второй экран",
+                "font": { "name": "helvetica", "size": 22 }
+              }
+            }
+          },
+          "components": []
+        },
+        "router": {
+          "path": "/second",
+          "actions": []
+        }
+      }
+    ]
+  }
