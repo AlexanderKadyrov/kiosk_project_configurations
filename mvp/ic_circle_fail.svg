@@ -1,0 +1,15 @@
+<svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="240" cy="240" r="203.478" fill="#FF9B17" fill-opacity="0.25"/>
+<circle cx="238.696" cy="238.696" r="176.087" fill="#FF9B17"/>
+<circle cx="240" cy="240" r="240" fill="#FF9B17" fill-opacity="0.25"/>
+<mask id="stroke0_140_17421" maskUnits="userSpaceOnUse" x="201.5" y="200.659" width="79" height="79" fill="black">
+<rect fill="white" x="201.5" y="200.659" width="79" height="79"/>
+<path d="M240.918 220.659V259.495ZM260.336 240.077H221.5Z"/>
+</mask>
+<path d="M240.918 220.659V259.495M260.336 240.077H221.5" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" stroke="#FF9B17" mask="url(#stroke0_140_17421)"/>
+<mask id="stroke1_140_17421" maskUnits="userSpaceOnUse" x="131.52" y="132.52" width="214.96" height="214.96" fill="black">
+<rect fill="white" x="131.52" y="132.52" width="214.96" height="214.96"/>
+<path d="M190.21 191.21L287.791 288.79ZM287.791 191.21L190.21 288.79Z"/>
+</mask>
+<path d="M190.21 191.21L287.791 288.79M287.791 191.21L190.21 288.79" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" stroke="white" mask="url(#stroke1_140_17421)"/>
+</svg>
