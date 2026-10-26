@@ -1,27 +1,30 @@
 {
   "screens": [
     {
+      "id": "screensaver",
+      "ui": {
+        "background": { "type": "source", "value": "https://githubusercontent.com" },
+        "navigation": { "title": { "text": { "value": "Нажмите для начала", "font": { "size": 32 } } } },
+        "components": [
+          { "id": "scr_spacer", "type": "spacer", "label": "", "components": [] },
+          { "id": "btn_start_session", "type": "button", "label": "Сделать заказ 🍕", "trigger_action_id": "start_order", "components": [] }
+        ]
+      },
+      "router": {
+        "path": "/sdui/screensaver",
+        "actions": [{ "id": "start_order", "screen_target_id": "main_dashboard" }]
+      }
+    },
+    {
       "id": "main_dashboard",
       "ui": {
-        "background": {
-          "type": "color",
-          "value": "#FF111111"
-        },
-        "navigation": {
-          "title": {
-            "text": {
-              "value": "Реактивный терминал",
-              "font": {
-                "size": 22
-              }
-            }
-          }
-        },
+        "background": { "type": "color", "value": "#FF111111" },
+        "navigation": { "title": { "text": { "value": "Реактивный терминал", "font": { "size": 22 } } } },
         "components": [
           {
             "id": "kiosk_root_vertical_layout",
             "type": "column",
-            "label": "Корневой контейнер",
+            "label": "Корневой контейнер витрины",
             "components": [
               {
                 "id": "kiosk_split_body",
@@ -40,12 +43,7 @@
                       "type": "column",
                       "label": "",
                       "components": [
-                        {
-                          "id": "t_cat_name",
-                          "type": "text",
-                          "label": "● {{category_name}}",
-                          "components": []
-                        }
+                        { "id": "t_cat_name", "type": "text", "label": "● {{category_name}}", "components": [] }
                       ]
                     }
                   },
@@ -61,18 +59,8 @@
                       "type": "column",
                       "label": "",
                       "components": [
-                        {
-                          "id": "t_dish_name",
-                          "type": "text",
-                          "label": "{{dish_name}}",
-                          "components": []
-                        },
-                        {
-                          "id": "t_dish_price",
-                          "type": "text",
-                          "label": "{{dish_price}}",
-                          "components": []
-                        }
+                        { "id": "t_dish_name", "type": "text", "label": "{{dish_name}}", "components": [] },
+                        { "id": "t_dish_price", "type": "text", "label": "{{dish_price}}", "components": [] }
                       ]
                     }
                   }
@@ -95,23 +83,15 @@
                       "type": "column",
                       "label": "",
                       "components": [
-                        {
-                          "id": "t_cart_item_name",
-                          "type": "text",
-                          "label": "{{cart_item_name}}",
-                          "components": []
-                        },
-                        {
-                          "id": "t_cart_item_count",
-                          "type": "text",
-                          "label": "Кол-во: {{cart_item_count}} шт.",
-                          "components": []
-                        }
+                        { "id": "t_cart_item_name", "type": "text", "label": "{{cart_item_name}}", "components": [] },
+                        { "id": "t_cart_item_count", "type": "text", "label": "Кол-во: {{cart_item_count}} шт.", "components": [] }
                       ]
                     }
                   }
                 ]
-              }
+              },
+              { "id": "main_spacer", "type": "spacer", "label": "", "components": [] },
+              { "id": "btn_support", "type": "button", "label": "Инженерное меню (ПИН)", "trigger_action_id": "go_to_admin_panel", "components": [] }
             ]
           }
         ]
@@ -119,30 +99,16 @@
       "router": {
         "path": "/sdui/main_dashboard",
         "actions": [
-          {
-            "id": "click_on_dish",
-            "screen_target_id": "detail_screen"
-          }
+          { "id": "click_on_dish", "screen_target_id": "detail_screen" },
+          { "id": "go_to_admin_panel", "screen_target_id": "admin_settings" }
         ]
       }
     },
     {
       "id": "detail_screen",
       "ui": {
-        "background": {
-          "type": "color",
-          "value": "#00000000"
-        },
-        "navigation": {
-          "title": {
-            "text": {
-              "value": "Настройка блюда",
-              "font": {
-                "size": 20
-              }
-            }
-          }
-        },
+        "background": { "type": "color", "value": "#00000000" },
+        "navigation": { "title": { "text": { "value": "Настройка блюда", "font": { "size": 20 } } } },
         "components": [
           {
             "id": "detail_root_column",
@@ -160,18 +126,8 @@
                   "type": "column",
                   "label": "",
                   "components": [
-                    {
-                      "id": "det_name",
-                      "type": "text",
-                      "label": "{{dish_name}}",
-                      "components": []
-                    },
-                    {
-                      "id": "det_price",
-                      "type": "text",
-                      "label": "Цена: {{dish_price}}",
-                      "components": []
-                    }
+                    { "id": "det_name", "type": "text", "label": "{{dish_name}}", "components": [] },
+                    { "id": "det_price", "type": "text", "label": "Цена: {{dish_price}}", "components": [] }
                   ]
                 }
               },
@@ -180,52 +136,44 @@
                 "type": "list_view",
                 "label": "Динамический список соусов и топпингов",
                 "data_source": "dish_modifiers_stream",
-                "trigger_action_id": "toggle_modifier",
+                "trigger_action_id": "click_on_dish",
                 "components": [],
                 "template": {
                   "id": "modifier_item_template",
                   "type": "column",
                   "label": "",
                   "components": [
-                    {
-                      "id": "mod_name",
-                      "type": "text",
-                      "label": "[ ] {{mod_name}} — {{mod_price}} {{mod_status}}",
-                      "components": []
-                    }
+                    { "id": "mod_name", "type": "text", "label": "[ ] {{mod_name}} — {{mod_price}} {{mod_status}}", "components": [] }
                   ]
                 }
               },
-              {
-                "id": "btn_add_modified",
-                "type": "button",
-                "label": "ДОБАВИТЬ В ЗАКАЗ 🛒",
-                "trigger_action_id": "confirm_dish",
-                "components": []
-              },
-              {
-                "id": "btn_back",
-                "type": "button",
-                "label": "← Закрыть",
-                "trigger_action_id": "back_home",
-                "components": []
-              }
-            ]
-          }
-        ]
-      },
+              { "id": "btn_add_modified", "type": "button", "label": "ДОБАВИТЬ В ЗАКАЗ 🛒", "trigger_action_id": "confirm_dish", "components": [] },
+              { "id": "btn_back", "type": "button", "label": "← Закрыть", "trigger_action_id": "back_home", "components": [] }
+          ]
+        }
+      ]
+    },
       "router": {
         "path": "/sdui/detail_screen",
         "actions": [
-          {
-            "id": "back_home",
-            "screen_target_id": "main_dashboard"
-          },
-          {
-            "id": "confirm_dish",
-            "screen_target_id": "main_dashboard"
-          }
+          { "id": "back_home", "screen_target_id": "main_dashboard" },
+          { "id": "confirm_dish", "screen_target_id": "main_dashboard" }
         ]
+      }
+    },
+    {
+      "id": "admin_settings",
+      "ui": {
+        "background": { "type": "color", "value": "#FF212121" },
+        "navigation": { "title": { "text": { "value": "Настройки Терминала", "font": { "size": 22 } } } },
+        "components": [
+          { "id": "adm_spacer", "type": "spacer", "label": "", "components": [] },
+          { "id": "btn_adm_back", "type": "button", "label": "Выйти из настроек", "trigger_action_id": "exit_admin", "components": [] }
+        ]
+      },
+      "router": {
+        "path": "/sdui/admin_settings",
+        "actions": [{ "id": "exit_admin", "screen_target_id": "main_dashboard" }]
       }
     }
   ]
