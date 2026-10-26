@@ -3,7 +3,7 @@
     {
       "id": "screensaver",
       "ui": {
-        "background": { "type": "source", "value": "https://githubusercontent.com" },
+        "background": { "type": "source", "value": "https://raw.githubusercontent.com/AlexanderKadyrov/kiosk_project_configurations/refs/heads/master/configurations/mvp/assets/im_page_start.png" },
         "navigation": { "title": { "text": { "value": "Нажмите для начала", "font": { "size": 32 } } } },
         "components": [
           { "id": "scr_spacer", "type": "spacer", "label": "", "components": [] },
