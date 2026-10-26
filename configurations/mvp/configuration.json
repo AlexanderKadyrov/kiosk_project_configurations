@@ -1,57 +1,84 @@
 {
-    "screens": [
-      {
-        "id": "first_screen",
-        "ui": {
-          "background": {
-            "type": "source",
-            "value": "https://github.com/AlexanderKadyrov/kiosk_project_configurations/blob/master/configurations/mvp/assets/im_page_start.png?raw=true"
-          },
-          "navigation": {
-            "title": {
-              "text": {
-                "value": "Главный экран",
-                "font": { "name": "helvetica", "size": 24 }
-              }
-            }
-          },
-          "components": [
-            {
-              "id": "btn_go_to_second",
-              "type": "button",
-              "label": "Открыть второй экран",
-              "trigger_action_id": "to_second"
-            }
-          ]
-        },
-        "router": {
-          "path": "/",
-          "actions": [
-            { "id": "to_second", "screen_target_id": "second_screen" }
-          ]
-        }
+  "screens": [
+    {
+      "id": "screensaver",
+      "ui": {
+        "background": { "type": "source", "value": "https://raw.githubusercontent.com/AlexanderKadyrov/kiosk_project_configurations/refs/heads/master/configurations/mvp/assets/im_page_start.png" },
+        "navigation": { "title": { "text": { "value": "Нажмите для начала", "font": { "size": 32 } } } },
+        "components": [
+          { "id": "scr_spacer", "type": "spacer", "label": "", "components": [] },
+          { "id": "btn_start_session", "type": "button", "label": "Сделать заказ 🍕", "trigger_action_id": "start_order", "components": [] }
+        ]
       },
-      {
-        "id": "second_screen",
-        "ui": {
-          "background": {
-            "type": "color",
-            "value": "#FF1A237E"
-          },
-          "navigation": {
-            "title": {
-              "text": {
-                "value": "Второй экран",
-                "font": { "name": "helvetica", "size": 22 }
-              }
+      "router": {
+        "path": "/sdui/screensaver",
+        "actions": [{ "id": "start_order", "screen_target_id": "main_dashboard" }]
+      }
+    },
+    {
+      "id": "main_dashboard",
+      "ui": {
+        "background": { "type": "color", "value": "#FF111111" },
+        "navigation": { "title": { "text": { "value": "Реактивный терминал", "font": { "size": 22 } } } },
+        "components": [
+          {
+            "id": "dynamic_menu_list",
+            "type": "list_view",
+            "label": "Популярные блюда",
+            "data_source": "menu_stream",
+            "trigger_action_id": "click_on_dish",
+            "components": [],
+            "template": {
+              "id": "dish_card_container",
+              "type": "column",
+              "label": "",
+              "components": [
+                { "id": "t_name", "type": "text", "label": "{{dish_name}}", "components": [] },
+                { "id": "t_price", "type": "text", "label": "Цена: {{dish_price}}", "components": [] }
+              ]
             }
           },
-          "components": []
-        },
-        "router": {
-          "path": "/second",
-          "actions": []
-        }
+          { "id": "main_spacer", "type": "spacer", "label": "", "components": [] },
+          { "id": "btn_support", "type": "button", "label": "Инженерное меню (ПИН)", "trigger_action_id": "go_to_admin_panel", "components": [] }
+        ]
+      },
+      "router": {
+        "path": "/sdui/main_dashboard",
+        "actions": [
+          { "id": "click_on_dish", "screen_target_id": "detail_screen" },
+          { "id": "go_to_admin_panel", "screen_target_id": "admin_settings" }
+        ]
       }
-    ]
-  }
+    },
+    {
+      "id": "detail_screen",
+      "ui": {
+        "background": { "type": "color", "value": "#FF222222" },
+        "navigation": { "title": { "text": { "value": "Детали блюда", "font": { "size": 22 } } } },
+        "components": [
+          { "id": "det_spacer", "type": "spacer", "label": "", "components": [] },
+          { "id": "btn_back", "type": "button", "label": "Назад в меню", "trigger_action_id": "back_home", "components": [] }
+        ]
+      },
+      "router": {
+        "path": "/sdui/detail_screen",
+        "actions": [{ "id": "back_home", "screen_target_id": "main_dashboard" }]
+      }
+    },
+    {
+      "id": "admin_settings",
+      "ui": {
+        "background": { "type": "color", "value": "#FF212121" },
+        "navigation": { "title": { "text": { "value": "Настройки Терминала", "font": { "size": 22 } } } },
+        "components": [
+          { "id": "adm_spacer", "type": "spacer", "label": "", "components": [] },
+          { "id": "btn_adm_back", "type": "button", "label": "Выйти из настроек", "trigger_action_id": "exit_admin", "components": [] }
+        ]
+      },
+      "router": {
+        "path": "/sdui/admin_settings",
+        "actions": [{ "id": "exit_admin", "screen_target_id": "main_dashboard" }]
+      }
+    }
+  ]
+}
