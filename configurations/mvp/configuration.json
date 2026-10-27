@@ -175,52 +175,44 @@
                 },
                 "components": [
                   {
-                    "id": "kiosk_cart_section",
-                    "type": "row",
-                    "main_axis_size": "max",
-                    "cross_axis_alignment": "center",
-                    "components": [
-                      {
-                        "id": "cart_items_list",
-                        "type": "list_view",
-                        "data_source": "cart_stream",
-                        "trigger_action_id": "remove_from_cart",
-                        "scroll_direction": "horizontal",
-                        "template": {
-                          "id": "cart_item_card",
-                          "type": "card",
+                    "id": "cart_items_list",
+                    "type": "list_view",
+                    "data_source": "cart_stream",
+                    "trigger_action_id": "remove_from_cart",
+                    "scroll_direction": "horizontal",
+                    "template": {
+                      "id": "cart_item_card",
+                      "type": "card",
+                      "components": [
+                        {
+                          "id": "cart_item_container",
+                          "type": "container",
+                          "padding": {
+                            "all": 12
+                          },
                           "components": [
                             {
-                              "id": "cart_item_container",
-                              "type": "container",
-                              "padding": {
-                                "all": 12
-                              },
+                              "id": "cart_item_layout",
+                              "type": "column",
+                              "main_axis_size": "min",
+                              "cross_axis_alignment": "start",
                               "components": [
                                 {
-                                  "id": "cart_item_layout",
-                                  "type": "column",
-                                  "main_axis_size": "min",
-                                  "cross_axis_alignment": "start",
-                                  "components": [
-                                    {
-                                      "id": "t_cart_item_name",
-                                      "type": "text",
-                                      "label": "{{cart_item_name}}"
-                                    },
-                                    {
-                                      "id": "t_cart_item_count",
-                                      "type": "text",
-                                      "label": "Кол-во: {{cart_item_count}} шт."
-                                    }
-                                  ]
+                                  "id": "t_cart_item_name",
+                                  "type": "text",
+                                  "label": "{{cart_item_name}}"
+                                },
+                                {
+                                  "id": "t_cart_item_count",
+                                  "type": "text",
+                                  "label": "Кол-во: {{cart_item_count}} шт."
                                 }
                               ]
                             }
                           ]
                         }
-                      }
-                    ]
+                      ]
+                    }
                   }
                 ]
               },
