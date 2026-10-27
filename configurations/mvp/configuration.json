@@ -85,7 +85,7 @@
                     "id": "kiosk_split_body",
                     "type": "row",
                     "main_axis_size": "max",
-                    "cross_axis_alignment": "start",
+                    "cross_axis_alignment": "stretch",
                     "components": [
                       {
                         "id": "categories_sidebar",
