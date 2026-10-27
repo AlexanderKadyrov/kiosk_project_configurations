@@ -77,131 +77,152 @@
             "cross_axis_alignment": "stretch",
             "components": [
               {
-                "id": "kiosk_split_body",
-                "type": "row",
-                "main_axis_size": "max",
-                "cross_axis_alignment": "start",
+                "id": "kiosk_split_body_layout_stretcher",
+                "type": "expanded",
+                "flex": 1,
                 "components": [
                   {
-                    "id": "categories_sidebar",
-                    "type": "list_view",
-                    "data_source": "categories_stream",
-                    "trigger_action_id": "select_category",
-                    "width": 260,
-                    "template": {
-                      "id": "cat_item_card",
-                      "type": "card",
-                      "color": "#33FFFFFF",
-                      "components": [
-                        {
-                          "id": "cat_item_padding",
-                          "type": "container",
-                          "padding": {
-                            "all": 12
-                          },
+                    "id": "kiosk_split_body",
+                    "type": "row",
+                    "main_axis_size": "max",
+                    "cross_axis_alignment": "start",
+                    "components": [
+                      {
+                        "id": "categories_sidebar",
+                        "type": "list_view",
+                        "data_source": "categories_stream",
+                        "trigger_action_id": "select_category",
+                        "width": 260,
+                        "scroll_direction": "vertical",
+                        "template": {
+                          "id": "cat_item_card",
+                          "type": "card",
+                          "color": "#33FFFFFF",
                           "components": [
                             {
-                              "id": "t_cat_name",
-                              "type": "text",
-                              "label": "● {{category_name}}"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "id": "dishes_grid_content",
-                    "type": "grid_view",
-                    "data_source": "category_detail_stream",
-                    "trigger_action_id": "click_on_dish",
-                    "template": {
-                      "id": "dish_card",
-                      "type": "card",
-                      "color": "#22FFFFFF",
-                      "components": [
-                        {
-                          "id": "dish_card_container",
-                          "type": "container",
-                          "padding": {
-                            "all": 16
-                          },
-                          "components": [
-                            {
-                              "id": "dish_card_layout",
-                              "type": "column",
-                              "main_axis_size": "min",
-                              "cross_axis_alignment": "center",
+                              "id": "cat_item_padding",
+                              "type": "container",
+                              "padding": {
+                                "all": 12
+                              },
                               "components": [
                                 {
-                                  "id": "t_dish_name",
+                                  "id": "t_cat_name",
                                   "type": "text",
-                                  "label": "{{dish_name}}"
-                                },
-                                {
-                                  "id": "t_dish_price",
-                                  "type": "text",
-                                  "label": "{{dish_price}}"
+                                  "label": "● {{category_name}}"
                                 }
                               ]
                             }
                           ]
                         }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "id": "kiosk_cart_section",
-                "type": "row",
-                "main_axis_size": "max",
-                "cross_axis_alignment": "center",
-                "components": [
-                  {
-                    "id": "cart_items_list",
-                    "type": "list_view",
-                    "data_source": "cart_stream",
-                    "trigger_action_id": "remove_from_cart",
-                    "template": {
-                      "id": "cart_item_card",
-                      "type": "card",
-                      "components": [
-                        {
-                          "id": "cart_item_container",
-                          "type": "container",
-                          "padding": {
-                            "all": 12
-                          },
+                      },
+                      {
+                        "id": "dishes_grid_content",
+                        "type": "grid_view",
+                        "data_source": "category_detail_stream",
+                        "trigger_action_id": "click_on_dish",
+                        "scroll_direction": "vertical",
+                        "template": {
+                          "id": "dish_card",
+                          "type": "card",
+                          "color": "#22FFFFFF",
                           "components": [
                             {
-                              "id": "cart_item_layout",
-                              "type": "column",
-                              "main_axis_size": "min",
-                              "cross_axis_alignment": "start",
+                              "id": "dish_card_container",
+                              "type": "container",
+                              "padding": {
+                                "all": 16
+                              },
                               "components": [
                                 {
-                                  "id": "t_cart_item_name",
-                                  "type": "text",
-                                  "label": "{{cart_item_name}}"
-                                },
-                                {
-                                  "id": "t_cart_item_count",
-                                  "type": "text",
-                                  "label": "Кол-во: {{cart_item_count}} шт."
+                                  "id": "dish_card_layout",
+                                  "type": "column",
+                                  "main_axis_size": "min",
+                                  "cross_axis_alignment": "center",
+                                  "components": [
+                                    {
+                                      "id": "t_dish_name",
+                                      "type": "text",
+                                      "label": "{{dish_name}}"
+                                    },
+                                    {
+                                      "id": "t_dish_price",
+                                      "type": "text",
+                                      "label": "{{dish_price}}"
+                                    }
+                                  ]
                                 }
                               ]
                             }
                           ]
                         }
-                      ]
-                    }
+                      }
+                    ]
                   }
                 ]
               },
               {
                 "id": "main_spacer",
                 "type": "spacer"
+              },
+              {
+                "id": "kiosk_cart_section_fixed_container",
+                "type": "container",
+                "height": 200,
+                "margin": {
+                  "top": 12,
+                  "bottom": 12
+                },
+                "components": [
+                  {
+                    "id": "kiosk_cart_section",
+                    "type": "row",
+                    "main_axis_size": "max",
+                    "cross_axis_alignment": "center",
+                    "components": [
+                      {
+                        "id": "cart_items_list",
+                        "type": "list_view",
+                        "data_source": "cart_stream",
+                        "trigger_action_id": "remove_from_cart",
+                        "scroll_direction": "horizontal",
+                        "template": {
+                          "id": "cart_item_card",
+                          "type": "card",
+                          "components": [
+                            {
+                              "id": "cart_item_container",
+                              "type": "container",
+                              "padding": {
+                                "all": 12
+                              },
+                              "components": [
+                                {
+                                  "id": "cart_item_layout",
+                                  "type": "column",
+                                  "main_axis_size": "min",
+                                  "cross_axis_alignment": "start",
+                                  "components": [
+                                    {
+                                      "id": "t_cart_item_name",
+                                      "type": "text",
+                                      "label": "{{cart_item_name}}"
+                                    },
+                                    {
+                                      "id": "t_cart_item_count",
+                                      "type": "text",
+                                      "label": "Кол-во: {{cart_item_count}} шт."
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
               },
               {
                 "id": "btn_support_wrapper",
@@ -267,6 +288,7 @@
                 "id": "dish_header_info",
                 "type": "list_view",
                 "data_source": "single_dish_stream",
+                "scroll_direction": "vertical",
                 "template": {
                   "id": "header_card",
                   "type": "card",
@@ -306,6 +328,7 @@
                 "type": "list_view",
                 "data_source": "dish_modifiers_stream",
                 "trigger_action_id": "click_on_dish",
+                "scroll_direction": "vertical",
                 "template": {
                   "id": "modifier_item_card",
                   "type": "card",
@@ -320,7 +343,7 @@
                         {
                           "id": "mod_name",
                           "type": "text",
-                          "label": "[ ] {{mod_name}} — {{mod_price}} {{mod_status}}"
+                          "label": " {{mod_name}} — {{mod_price}} {{mod_status}}"
                         }
                       ]
                     }
